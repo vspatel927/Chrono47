@@ -1,42 +1,77 @@
 import { NextResponse } from "next/server";
-import { sendSMS } from "@/lib/telnyx";
+import nodemailer from "nodemailer";
+import { z } from "zod";
+
+const contactSchema = z.object({
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().min(1, "Last name is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().min(1, "Phone number is required"),
+    message: z.string().min(1, "Message is required"),
+    // Simple honeypot field, should be empty
+    _gotcha: z.string().optional(),
+});
 
 export async function POST(request: Request) {
     try {
         const formData = await request.formData();
-        const firstName = formData.get("firstName");
-        const lastName = formData.get("lastName");
-        const email = formData.get("email");
-        const phone = formData.get("phone");
-        const message = formData.get("message");
+        const data = {
+            firstName: formData.get("firstName"),
+            lastName: formData.get("lastName"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            message: formData.get("message"),
+            _gotcha: formData.get("_gotcha"),
+        };
 
-        // Basic validation
-        if (!firstName || !lastName || !email || !phone || !message) {
+        // 1. Honeypot check (Spam protection)
+        // If the honeypot field is filled, silently succeed
+        if (data._gotcha) {
+            console.log("Honeypot triggered");
+            return NextResponse.json({ success: true, message: "Inquiry sent successfully!" });
+        }
+
+        // 2. Validate input
+        const result = contactSchema.safeParse(data);
+
+        if (!result.success) {
+            console.error("Validation error:", result.error.issues);
             return NextResponse.json(
-                { error: "Missing required fields" },
+                { error: "Invalid form data", details: result.error.issues },
                 { status: 400 }
             );
         }
 
-        // Construct message for the business owner
-        const smsBody = `
-NEW LEAD:
+        const { firstName, lastName, email, phone, message } = result.data;
+
+        // 3. Configure Nodemailer
+        const transporter = nodemailer.createTransport({
+            service: "gmail", // OR use generic SMTP config if preferred
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        // 4. Send Email
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_TO,
+            subject: `New Lead: ${firstName} ${lastName}`,
+            text: `
 Name: ${firstName} ${lastName}
-Phone: ${phone}
 Email: ${email}
-Msg: ${message}
-    `.trim();
+Phone: ${phone}
 
-        // Send to business owner (configured or placeholder)
-        // Using the number found on Google Maps as the mock "Owner" for now,
-        // in reality this would be an env var.
-        await sendSMS("+17204926619", smsBody);
+Message:
+${message}
+      `,
+        };
 
-        // Return success - in a real app might redirect to a thank you page
-        // or return JSON for client-side handling.
-        // Since our form uses standard HTML action, we redirect back or to a success page.
-        // For MVP, simplistic redirect back to home with a query param.
-        return NextResponse.redirect(new URL("/?success=true", request.url));
+        await transporter.sendMail(mailOptions);
+
+        // 5. Success
+        return NextResponse.json({ success: true, message: "Inquiry sent successfully!" });
 
     } catch (error) {
         console.error("Form submission error:", error);

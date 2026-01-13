@@ -3,6 +3,7 @@ import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Preloader } from "@/components/Preloader";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -28,12 +29,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className={`${manrope.variable} ${playfair.variable} antialiased bg-background-light dark:bg-background-dark text-obsidian dark:text-white`}
       >
         <Preloader />
         <Analytics />
+        <SpeedInsights />
         {children}
       </body>
     </html>
