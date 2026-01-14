@@ -1,3 +1,6 @@
+"use client";
+import { Icon } from "./Icons";
+
 export function Services() {
     return (
         <section className="py-24 bg-obsidian-light relative border-y border-white/5" id="services">
@@ -14,7 +17,7 @@ export function Services() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="group bg-obsidian border border-white/5 p-8 rounded-xl hover:border-primary/50 transition-colors duration-300">
                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-obsidian transition-colors">
-                            <span className="material-symbols-outlined">watch</span>
+                            <Icon name="watch" />
                         </div>
                         <h4 className="text-2xl font-serif italic text-white mb-4">
                             Buy, Sell & Trade
@@ -26,7 +29,7 @@ export function Services() {
                     </div>
                     <div className="group bg-obsidian border border-white/5 p-8 rounded-xl hover:border-primary/50 transition-colors duration-300">
                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-obsidian transition-colors">
-                            <span className="material-symbols-outlined">diamond</span>
+                            <Icon name="diamond" />
                         </div>
                         <h4 className="text-2xl font-serif italic text-white mb-4">
                             Bespoke Jewelry
@@ -38,7 +41,7 @@ export function Services() {
                     </div>
                     <div className="group bg-obsidian border border-white/5 p-8 rounded-xl hover:border-primary/50 transition-colors duration-300">
                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-obsidian transition-colors">
-                            <span className="material-symbols-outlined">construction</span>
+                            <Icon name="construction" />
                         </div>
                         <h4 className="text-2xl font-serif italic text-white mb-4">
                             Master Repairs

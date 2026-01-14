@@ -1,12 +1,13 @@
+"use client";
+import { Icon } from "./Icons";
+
 export function Testimonials() {
     return (
         <section className="py-24 bg-obsidian border-b border-white/5">
             <div className="mx-auto max-w-5xl px-6 lg:px-8 text-center">
                 <div className="flex justify-center gap-2 mb-8 text-primary">
                     {[1, 2, 3, 4, 5].map((star) => (
-                        <span key={star} className="material-symbols-outlined text-sm fill-icon">
-                            star
-                        </span>
+                        <Icon key={star} name="star" className="text-sm" />
                     ))}
                 </div>
                 <blockquote className="text-2xl md:text-4xl font-serif italic text-white leading-relaxed mb-10 max-w-4xl mx-auto">

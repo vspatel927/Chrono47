@@ -2,26 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useLoading } from "./LoadingContext";
 
 export const Preloader = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [shouldRender, setShouldRender] = useState(true);
+    const { setIsLoaded } = useLoading();
 
     useEffect(() => {
-        const handleLoad = () => {
-            // Add a small delay to ensure smooth transition even on fast loads
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 800);
-        };
-
-        // Check if document is already loaded
-        if (document.readyState === "complete") {
-            handleLoad();
-        } else {
-            window.addEventListener("load", handleLoad);
-            return () => window.removeEventListener("load", handleLoad);
-        }
+        // Immediate dismissal after mount
+        setIsLoading(false);
     }, []);
 
     // remove from DOM after transition
@@ -29,10 +19,11 @@ export const Preloader = () => {
         if (!isLoading) {
             const timer = setTimeout(() => {
                 setShouldRender(false);
+                setIsLoaded(true); // Signal that the site has loaded
             }, 500); // match transition duration
             return () => clearTimeout(timer);
         }
-    }, [isLoading]);
+    }, [isLoading, setIsLoaded]);
 
     if (!shouldRender) return null;
 

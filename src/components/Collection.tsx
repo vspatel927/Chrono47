@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useInquiry } from "./InquiryContext";
+import { Icon } from "./Icons";
 
 const WATCHES = [
     {
@@ -10,21 +11,21 @@ const WATCHES = [
         name: "Rolex Daytona 'Panda'",
         details: "Ceramic Bezel • 126500LN",
         price: "$34,500",
-        image: "/assets/watches/daytona-panda.png"
+        image: "/assets/watches/daytona-panda.avif"
     },
     {
         id: 2,
         name: "AP Royal Oak",
         details: "Rose Gold • Blue Dial • 41mm",
         price: "$78,000",
-        image: "/assets/watches/royal-oak-rose-gold.png"
+        image: "/assets/watches/royal-oak-rose-gold.avif"
     },
     {
         id: 3,
         name: "Patek Nautilus",
         details: "Ref 5711/1A • Blue Dial",
         price: "$125,000",
-        image: "/assets/watches/nautilus-5711.png"
+        image: "/assets/watches/nautilus-5711.avif"
     }
 ];
 
@@ -115,8 +116,8 @@ export function Collection() {
                         href="#"
                     >
                         View Full Collection
-                        <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">
-                            arrow_forward
+                        <span className="transition-transform group-hover:translate-x-1 flex items-center">
+                            <Icon name="arrow_forward" className="text-lg" />
                         </span>
                     </Link>
                 </div>

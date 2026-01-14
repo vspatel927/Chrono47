@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useLoading } from "./LoadingContext";
 
 export function Hero() {
     return (
@@ -45,17 +47,58 @@ export function Hero() {
 }
 
 function VideoComponent() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const { isLoaded } = useLoading();
+    const [isMobile, setIsMobile] = useState(true); // Default to mobile to prevent early video fetch
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Initial check
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (!isMobile && isLoaded && videoRef.current) {
+            videoRef.current.play().catch(error => {
+                console.log("Video play failed (likely autoplay policy):", error);
+            });
+        }
+    }, [isLoaded, isMobile]);
+
     return (
         <div
             className="w-full relative aspect-[4/5] lg:aspect-video overflow-hidden"
         >
-            <video
-                src="/assets/HeroV2.mp4"
-                className="w-full h-full object-cover scale-110"
-                autoPlay
-                muted
-                playsInline
-            />
+            {isMobile ? (
+                <div className="relative w-full h-full">
+                    {/* Placeholder for the 'last frame/logo' image requested by user */}
+                    <div className="absolute inset-0 bg-black flex items-center justify-center">
+                        <Image
+                            src="/assets/header-logo.png"
+                            alt="Chrono47"
+                            width={200}
+                            height={100}
+                            className="w-48 h-auto object-contain brightness-110"
+                        />
+                    </div>
+                </div>
+            ) : (
+                <video
+                    ref={videoRef}
+                    src="/assets/HeroV2.mp4"
+                    poster="/assets/hero-poster.avif"
+                    className="w-full h-full object-cover scale-110"
+                    muted
+                    playsInline
+                    preload="auto"
+                />
+            )}
         </div>
     );
 }

@@ -3,13 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { Icon } from "./Icons";
 
 export function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [logoError, setLogoError] = useState(false);
 
     return (
-        <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-obsidian/90 backdrop-blur-md">
+        <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-obsidian/95 md:bg-obsidian/90 md:backdrop-blur-md transition-all">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="flex h-24 lg:h-32 items-center justify-between">
                     {/* Desktop Navigation */}
@@ -73,9 +74,7 @@ export function Header() {
                             className="text-white p-2 hover:text-primary transition-colors"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
-                            <span className="material-symbols-outlined text-2xl">
-                                {isMobileMenuOpen ? "close" : "menu"}
-                            </span>
+                            <Icon name={isMobileMenuOpen ? "close" : "menu"} className="text-2xl" />
                         </button>
                     </div>
                 </div>
