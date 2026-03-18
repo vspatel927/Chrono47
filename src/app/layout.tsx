@@ -17,10 +17,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Chrono 47 | Luxury Timepieces & Jewelry",
-  description: "Experience the pinnacle of horology and bespoke jewelry in New York City. Expert sourcing of Rolex, Patek Philippe, and Audemars Piguet.",
+  description: "Experience the pinnacle of horology and bespoke jewelry in New York City. Expert sourcing of Rolex, Patek Philippe, Audemars Piguet, Richard Mille and more. We buy, sell, and trade luxury watches.",
   openGraph: {
     title: "Chrono 47 | Luxury Timepieces & Jewelry - NYC",
-    description: "Expert sourcing of Rolex, Patek Philippe, and Audemars Piguet. Visit our New York City showroom.",
+    description: "Expert sourcing of Rolex, Patek Philippe, Audemars Piguet, Richard Mille and more in NYC. We buy, sell, and trade luxury watches and offer bespoke jewelry services.",
     url: "https://chrono-47.com",
     siteName: "Chrono 47",
     images: [
@@ -40,7 +40,20 @@ export const metadata: Metadata = {
     description: "Expert sourcing of Rolex, Patek Philippe, and Audemars Piguet.",
     images: ["/assets/header-logo.png"],
   },
-  keywords: ["luxury watches", "rolex", "patek philippe", "audemars piguet", "new york watch dealer", "bespoke jewelry", "watch trade"],
+  keywords: [
+    "luxury watches",
+    "rolex daytona",
+    "richard mille timepieces",
+    "audemars piguet timepiece",
+    "royal oak",
+    "jewelry repairs",
+    "luxury watches for men",
+    "New York Luxury Watch Dealer",
+    "Buy Rolex NYC",
+    "Patek Philippe Authorized Reseller",
+    "Sell Audemars Piguet",
+    "Investment Grade Watches"
+  ],
   authors: [{ name: "Chrono 47" }],
   publisher: "Chrono 47",
   metadataBase: new URL("https://chrono-47.com"),
@@ -125,6 +138,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <meta name="google-site-verification" content="g6tB_sn5R_06uGMd7HiLZqApnZcGyTYJEE7pFc-TrVc" />
       </head>
       <body
         className={`${manrope.variable} ${playfair.variable} antialiased bg-background-light dark:bg-background-dark text-obsidian dark:text-white`}
