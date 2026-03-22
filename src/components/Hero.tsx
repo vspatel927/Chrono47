@@ -15,14 +15,14 @@ export function Hero() {
                             <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-6 block">
                                 Luxury Watches & Fine Jewelry
                             </span>
-                            <h2 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-6">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-6">
                                 <span className="font-serif italic font-normal text-white block">
                                     Luxury
                                 </span>
                                 <span className="font-display font-light text-gray-400 block">
                                     Vision
                                 </span>
-                            </h2>
+                            </h1>
                             <p className="text-lg text-gray-400 leading-relaxed max-w-md font-light font-body">
                                 Experience the pinnacle of horology. We curate the world&apos;s most
                                 coveted timepieces and bespoke jewelry to make your vision come to life.
