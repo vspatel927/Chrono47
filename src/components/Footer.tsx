@@ -1,4 +1,5 @@
 import { ContactForm } from "./ContactForm";
+import seoData from "@/data/seo-pages.json";
 
 export function Footer() {
     return (
@@ -76,6 +77,45 @@ export function Footer() {
                         </div>
                     </div>
                 </div>
+                
+                {/* SEO Orphan Page Prevention: Internal Linking Matrix */}
+                <div className="border-t border-white/10 pt-10 pb-12 mt-4 grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
+                    <div className="lg:col-span-3">
+                        <h4 className="text-primary text-xs font-bold tracking-[0.2em] uppercase font-display mb-6 md:mb-8 text-center md:text-left">
+                            Popular Models We Source
+                        </h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-4 gap-x-4">
+                            {seoData.pages.filter(p => p.type === 'source').map((page) => (
+                                <a 
+                                    key={page.slug}
+                                    href={`/source/${page.slug}`}
+                                    className="text-gray-500 hover:text-white transition-colors text-[10px] font-display uppercase tracking-widest truncate"
+                                    title={`Source ${page.brand} ${page.model} in NYC`}
+                                >
+                                    {page.brand} {page.model}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="lg:col-span-1">
+                        <h4 className="text-primary text-xs font-bold tracking-[0.2em] uppercase font-display mb-6 md:mb-8 text-center md:text-left">
+                            Buying Guides
+                        </h4>
+                        <div className="flex flex-col gap-y-4 items-center md:items-start">
+                            {seoData.guides.map((guide) => (
+                                <a 
+                                    key={guide.slug}
+                                    href={`/guides/${guide.slug}`}
+                                    className="text-gray-500 hover:text-white transition-colors text-[10px] font-display uppercase tracking-widest"
+                                    title={guide.hero.title}
+                                >
+                                    {guide.slug.replace(/-/g, ' ')}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-display">
                     <p>© {new Date().getFullYear()} Chrono 47. All rights reserved.</p>
                     <div className="flex gap-6">
