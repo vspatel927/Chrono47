@@ -62,7 +62,7 @@ export function Footer() {
                                 <p className="font-light tracking-wide">37 W 47th St</p>
                                 <p className="font-light tracking-wide">Booth 64 & 65</p>
                                 <p className="font-light tracking-wide">New York, NY 10036</p>
-                                <p className="font-light tracking-wide mt-2 text-primary">(720) 492-6619</p>
+                                <a href="tel:7204926619" className="font-light tracking-wide mt-2 text-primary hover:text-white transition-colors block">(720) 492-6619</a>
                             </div>
                             <div className="text-right">
                                 <h4 className="text-white font-serif text-lg italic mb-2">
