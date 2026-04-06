@@ -16,11 +16,11 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Chrono 47 | Luxury Timepieces & Jewelry",
-  description: "Experience the pinnacle of horology and bespoke jewelry in New York City. Expert sourcing of Rolex, Patek Philippe, Audemars Piguet, Richard Mille and more. We buy, sell, and trade luxury watches.",
+  title: "Chrono 47 | Luxury Watch Dealers on 47th Street NYC",
+  description: "Experience the pinnacle of horology from the premier watch dealers on 47th Street in New York City. Expert sourcing of Rolex, Patek Philippe, Audemars Piguet & more. We buy, sell, and trade luxury watches.",
   openGraph: {
-    title: "Chrono 47 | Luxury Timepieces & Jewelry - NYC",
-    description: "Expert sourcing of Rolex, Patek Philippe, Audemars Piguet, Richard Mille and more in NYC. We buy, sell, and trade luxury watches and offer bespoke jewelry services.",
+    title: "Chrono 47 | Luxury Watch Dealers on 47th Street NYC",
+    description: "Expert sourcing of Rolex, Patek Philippe, Audemars Piguet & more in NYC. We buy, sell, and trade luxury watches and offer bespoke jewelry services.",
     url: "https://chrono-47.com",
     siteName: "Chrono 47",
     images: [
@@ -36,11 +36,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary", // Summary card for Logo
-    title: "Chrono 47 | Luxury Timepieces & Jewelry - NYC",
+    title: "Chrono 47 | Luxury Watch Dealers on 47th Street NYC",
     description: "Expert sourcing of Rolex, Patek Philippe, and Audemars Piguet.",
     images: ["/assets/header-logo.png"],
   },
   keywords: [
+    "watch dealers on 47th street",
+    "47th street watch dealer nyc",
+    "diamond district watch dealers",
     "luxury watches",
     "rolex daytona",
     "richard mille timepieces",

@@ -24,7 +24,7 @@ export function Hero() {
                                 </span>
                             </h1>
                             <p className="text-lg text-gray-400 leading-relaxed max-w-md font-light font-body">
-                                Experience the pinnacle of horology. We curate the world&apos;s most
+                                Experience the pinnacle of horology from the premier watch dealers on 47th Street in NYC. We curate the world&apos;s most
                                 coveted timepieces and bespoke jewelry to make your vision come to life.
                             </p>
                         </div>
