@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Chrono 47 | Luxury Watch Dealers on 47th Street NYC",
-  description: "Experience the pinnacle of horology from the premier watch dealers on 47th Street in New York City. Expert sourcing of Rolex, Patek Philippe, Audemars Piguet & more. We buy, sell, and trade luxury watches.",
+  description: "NYC's top watch dealer on 47th St. Buy, sell, and trade Rolex, Patek, AP and more. Expertly sourced luxury watches.",
   openGraph: {
     title: "Chrono 47 | Luxury Watch Dealers on 47th Street NYC",
     description: "Expert sourcing of Rolex, Patek Philippe, Audemars Piguet & more in NYC. We buy, sell, and trade luxury watches and offer bespoke jewelry services.",
